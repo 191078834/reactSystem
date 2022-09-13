@@ -3,8 +3,8 @@ function TodoList(props) {
   return (
     <>
       <ul>
-        {props.isloading ? (
-          <div style= {{background:'black'}} >IsLoading Status</div>
+        {props.isLoading ? (
+          <div style= {{background:'blue'}} >IsLoading Status</div>
         ) : props.data?(
           
           <ul>

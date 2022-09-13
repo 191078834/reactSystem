@@ -46,7 +46,7 @@ const dataFetchReducer = (state, action) => {
     case "FETCH_INIT":
       return {
         ...state,
-        isLoading: false,
+        isLoading: true,
         isError: false,
       };
     case "FETCH_SUCCESS":

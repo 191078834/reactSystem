@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import TextInputWithFocusButton from './TextInputWithFocusButton';
 import Todo from'./Todo';
 import TodoList from './TodoList'
 
@@ -11,6 +12,7 @@ root.render(
  
     <>
     <Todo/>
+    <TextInputWithFocusButton/>
     </>
 
 

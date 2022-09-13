@@ -4,7 +4,7 @@ import { ReactDOM } from "react-dom";
 import { useEffect, useState, useReducer, Fragment } from "react";
 import TodoList from "./TodoList";
 import useDataApi from './usePersonalState'
-import reducers from "./redux/reducers";
+// import reducers from "./redux/reducers";
 // import TextInputWithFocusButton from "./TextInputWithFocusButton";
 function Todo() {
  const  {isloading, isError, data, doFetch } = useDataApi('','');

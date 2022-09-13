@@ -3,13 +3,12 @@ import Mock from "mockjs";
 import { ReactDOM } from "react-dom";
 import { useEffect, useState, useReducer, Fragment } from "react";
 import TodoList from "./TodoList";
-import useDataApi from './usePersonalState'
+import useDataApi from "./usePersonalState";
 // import reducers from "./redux/reducers";
 // import TextInputWithFocusButton from "./TextInputWithFocusButton";
 function Todo() {
-  const  {isLoading, isError, data, doFetch } = useDataApi('', '');
+  const { isLoading, isError, data, doFetch } = useDataApi("", "");
   const [text, setText] = useState("");
-
 
   return (
     <>

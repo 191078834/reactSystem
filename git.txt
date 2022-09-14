@@ -35,6 +35,20 @@ git reset --hard  版本号
 版本回退的上一个版本
 git reflog
 
+
+获取分支名
+git remote
+
+连接远端主分支
+git fetch origin master
+
+更新单个文件
+git checkout 本地分支名 需要拉取的文件
+
+
+
+
+
 ①新しいリポジトリを新規する
 
 echo "# reactSystem" >> README.md

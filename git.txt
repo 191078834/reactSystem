@@ -45,6 +45,21 @@ git fetch origin master
 更新单个文件
 git checkout 本地分支名 需要拉取的文件
 
+############################
+
+切换本地分支
+git checkout 分支名
+在当前分支下创建my-test的本地分支分支
+git checkout -b my-test
+
+将my-test分支推送到远程
+git push origin my-test
+
+将本地分支my-test关联到远程分支my-test上
+git branch --set-upstream-to=origin/my-test
+git branch -a //查看远程分支 
+
+########################################
 
 
 

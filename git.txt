@@ -61,6 +61,24 @@ git branch -a //查看远程分支
 
 ########################################
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Automatic merge failed; fix conflicts and then commit the result.解决方法
+1.丢弃本地提交，强制回到线上最新版本
+git fetch --all
+git reset --hard origin/你需要下拉的分支(默认master)
+git fetch
+
+あるいは
+2.保存本地提交
+git reset -- abort
+git reset -- merge
+git commit -am '提交信息'
+git pull
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
 
 
 

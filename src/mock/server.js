@@ -1,6 +1,39 @@
 let express = require('express');    //引入express模块
 let Mock = require('mockjs');        //引入mock模块
 
+const fs=require('fs');             //文件管理系统
+const path=require('path');
+const dirname= "C:\\Users\\ths.developer.1\\OneDrive\\桌面\new\\reactSystem"
+function fn(filename){
+	return new Promise(function(resolve,reject){
+		//readFile(path,[encoding],callback)  异步读取文件全部内容
+		let content=fs.readFile(path.join(dirname, filename),'utf8',(err,data)=>{
+			if(err){
+				console.log(filename+' readFile fail');
+				reject(err);
+			}else{
+				resolve(filename+' readFile success : '+data);
+			}
+		})
+	})
+}
+
+
+async function f(){
+	console.log('同步执行开始...');
+	
+	let result1=await fn('word.txt');
+	console.log(result1);
+	console.log('同步执行结束...');
+}
+
+f();
+
+
+
+
+
+
 let app = express();                //实例化express
 
 

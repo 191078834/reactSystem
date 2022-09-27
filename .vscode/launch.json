@@ -1,6 +1,5 @@
 {
     "configurations": [
-    
         {
             "type": "pwa-msedge",
             "name": "Launch Microsoft Edge",
@@ -8,7 +7,7 @@
             "runtimeArgs": [
                 "--remote-debugging-port=9222"
             ],
-            "url": "http://localhost:3000", // Provide your project's url to finish configuring
+            "url": "http://localhost:3000",
             "presentation": {
                 "hidden": true
             }
@@ -21,7 +20,7 @@
                 "--headless",
                 "--remote-debugging-port=9222"
             ],
-            "url": "c:\\Users\\ths.developer.1\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.0\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "url": "c:\\Users\\ths.developer.1\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.0\\out\\startpage\\index.html",
             "presentation": {
                 "hidden": true
             }
@@ -30,10 +29,17 @@
             "type": "vscode-edge-devtools.debug",
             "name": "Open Edge DevTools",
             "request": "attach",
-            "url": "c:\\Users\\ths.developer.1\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.0\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "url": "c:\\Users\\ths.developer.1\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.0\\out\\startpage\\index.html",
             "presentation": {
                 "hidden": true
             }
+        },
+        {
+            "type": "node-terminal",
+            "name": "Run Script: start",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}"
         }
     ],
     "compounds": [

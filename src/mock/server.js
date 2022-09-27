@@ -3,7 +3,7 @@ let Mock = require('mockjs');        //引入mock模块
 
 const fs=require('fs');             //文件管理系统
 const path=require('path');
-const dirname= "C:\\Users\\ths.developer.1\\OneDrive\\桌面\new\\reactSystem"
+const dirname= "C:\\Users\\ths.developer.1\\nodedemo\\reactSystem"
 function fn(filename){
 	return new Promise(function(resolve,reject){
 		//readFile(path,[encoding],callback)  异步读取文件全部内容
@@ -12,27 +12,31 @@ function fn(filename){
 				console.log(filename+' readFile fail');
 				reject(err);
 			}else{
-				resolve(filename+' readFile success : '+data);
+				resolve(data);
 			}
 		})
 	})
 }
 
 
-async function f(){
-	console.log('同步执行开始...');
-	
-	let result1=await fn('word.txt');
-	console.log(result1);
+async function wordReadApi(){
+    let date = new Date()
+	console.log('Read start', date.toJSON());
+	const fileName = 'word.txt';
+	let result= await fn(fileName);
+	console.log(result)
+    var newArr = result.split('\r');
+
 	console.log('同步执行结束...');
+
+    newArr.forEach(element => {
+        let newElement = element.replace('\n','').split(/\s/)
+        console.log(newElement);
+    });
 }
+wordReadApi();
 
-f();
-
-
-
-
-
+//====================================================================================
 
 let app = express();                //实例化express
 

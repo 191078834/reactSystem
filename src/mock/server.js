@@ -108,7 +108,8 @@ app.all('/search\/text/', function (req, res) {
      * mockjs中属性名‘|’符号后面的属性为随机属性，数组对象后面的随机属性为随机数组数量，正则表达式表示随机规则，+1代表自增
      */
     /* 设置定时器 为了设置isLoad Status */
-    setTimeout(function () { res.json(data); }, 5000);
+    // setTimeout(function () { res.json(data); }, 5000);
+    res.json(data)
 
 });
 

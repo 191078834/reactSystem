@@ -2,25 +2,26 @@ import React from "react";
 import { useEffect, useState, useReducer } from "react";
 
 //reducer
-const dataFetchReducer = (state, action) => {
+const dataFetchReducer = (preState, action) => {
+
   const { type } = action;
   switch (type) {
     case "FETCH_INIT":
       return {
-        ...state,
-        isLoading: true,
+        ...preState,
+        isLoading: false,
         isError: false,
       };
     case "FETCH_SUCCESS":
       return {
-        ...state,
+        ...preState,
         isLoading: false,
         isError: false,
         data: action.payload,
       };
     case "FETCH_FAILURE":
       return {
-        ...state,
+        ...preState,
         isLoading: false,
         isError: true,
       };

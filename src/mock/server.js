@@ -4,7 +4,7 @@ let Mock = require('mockjs');        //引入mock模块
 const fs = require('fs');             //文件管理系统
 const path = require('path');
 
-// word path
+// 単語のテキストのパース
 const dirname = "C:\\Users\\ths.developer.1\\nodedemo\\reactSystem"
 
 
@@ -34,7 +34,7 @@ const wordReadApi = async (fileName) => {
     });
     datas = FileArrayresult;
 }
-//
+// 単語のデータを取る
 wordReadApi('word.txt');
 
 //============================================================================================================================
@@ -51,6 +51,7 @@ var allowCrossDomain = function (req, res, next) {
 };
 app.use(allowCrossDomain);
 
+// 尚未开发的函数 用来匹配url参数
 const getParams = (url, name) => {
     //console.log(url,name);
     const index = url.indexOf('?');

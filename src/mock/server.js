@@ -4,8 +4,8 @@ let Mock = require('mockjs');        //引入mock模块
 const fs = require('fs');             //文件管理系统
 const path = require('path');
 
-// 単語のテキストのパース
-const dirname = "C:\\Users\\ths.developer.1\\nodedemo\\reactSystem"
+// 単語のテキストのパースを設定
+const dirname = "../" + __dirname ;
 
 
 function fn(filename) {
@@ -35,6 +35,7 @@ const wordReadApi = async (fileName) => {
     datas = FileArrayresult;
 }
 // 単語のデータを取る
+
 wordReadApi('word.txt');
 
 //============================================================================================================================

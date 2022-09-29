@@ -4,13 +4,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import TextInputWithFocusButton from './TextInputWithFocusButton';
 import Todo from'./Todo';
-import TodoList from './TodoList'
+import TestApp from './useContext/contextDemo'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
     <>
     <Todo/>
+    <TestApp/>
     {/* <TextInputWithFocusButton/> */}
     </>
 

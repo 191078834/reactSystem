@@ -1,10 +1,13 @@
 let express = require('express');    //引入express模块
 let Mock = require('mockjs');        //引入mock模块
-
+// let React = require('react');
 const fs = require('fs');             //文件管理系统
 const path = require('path');
 
+// word path
 const dirname = "C:\\Users\\ths.developer.1\\nodedemo\\reactSystem"
+
+
 function fn(filename) {
     return new Promise(function (resolve, reject) {
         //readFile(path,[encoding],callback)  异步读取文件全部内容
@@ -13,27 +16,28 @@ function fn(filename) {
         })
     })
 }
-
+var datas;
 const wordReadApi = async (fileName) => {
     let date = new Date()
     console.log('Read start Time', date.toJSON());
     let FileArrayresult = await fn(fileName).then((result) => {
         var newRowArr = result.split(/\r/);
         var Allarray = Array.of(newRowArr.length);
-        newRowArr.forEach(element => {
+        newRowArr.forEach((element, index) => {
             let newElement = element.replace(/\n/, '').split(/\s/)
             // push /unshift /contact
-            Allarray.unshift(newElement);
+            let jsonElement = { "id": index, "word": newElement[0], "hatuou": newElement[1], "translate": newElement[2] }
+            Allarray.unshift(jsonElement);
         });
         Allarray.pop();
         return Allarray
     });
-    console.log(FileArrayresult)
+    datas = FileArrayresult;
 }
 //
 wordReadApi('word.txt');
 
-//====================================================================================
+//============================================================================================================================
 
 let app = express();                //实例化express
 
@@ -66,10 +70,7 @@ const getParams = (url, name) => {
 
 }
 
-/**
- * @param  {[type]} req  [客户端发过来的请求所带数据]
- * @param  {[type]} res  [服务端的相应对象，可使用res.send返回数据，res.json返回json数据，res.down返回下载文件]
- */
+// create mock data
 let data = Mock.mock({
     "data|6": [ //生成6条数据 数组
         {
@@ -102,14 +103,18 @@ let data = Mock.mock({
 //     return data
 // })
 
-
+/**
+ * @param  {[type]} req  [客户端发过来的请求所带数据]
+ * @param  {[type]} res  [服务端的相应对象，可使用res.send返回数据，res.json返回json数据，res.down返回下载文件]
+ */
 app.all('/search\/text/', function (req, res) {
     /**
      * mockjs中属性名‘|’符号后面的属性为随机属性，数组对象后面的随机属性为随机数组数量，正则表达式表示随机规则，+1代表自增
      */
     /* 设置定时器 为了设置isLoad Status */
     // setTimeout(function () { res.json(data); }, 5000);
-    res.json(data)
+    jsonData = { "data": datas }
+    res.json(jsonData)
 
 });
 

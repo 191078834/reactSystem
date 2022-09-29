@@ -9,7 +9,7 @@ function TodoList(props) {
           <ul>
             {props.data.map((item, index) => (
               <li key={index}>
-                {item.shopId}, {item.shopMsg}, {item.shopName}
+                {item.id}, {item.word}, {item.hatuou},{item.translate}
               </li>
             ))}
           </ul>

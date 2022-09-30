@@ -6,11 +6,13 @@ const path = require('path');
 
 // 単語のテキストのパースを設定
 const dirname =  __dirname.substring(0, __dirname.lastIndexOf('\\'));
+console.log(dirname);
 
 
 function fn(filename) {
     return new Promise(function (resolve, reject) {
         //readFile(path,[encoding],callback)  异步读取文件全部内容
+        console.log(path.join(dirname, filename));
         let content = fs.readFile(path.join(dirname, filename), 'utf8', (err, data) => {
             err ? reject(err) : resolve(data);
         })

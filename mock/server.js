@@ -5,9 +5,7 @@ const fs = require('fs');             //文件管理系统
 const path = require('path');
 
 // 単語のテキストのパースを設定
-const dirname =  __dirname.substring(0, __dirname.lastIndexOf('\\'));
-console.log(dirname);
-
+const dirname = __dirname.substring(0, __dirname.lastIndexOf('\\'));
 
 function fn(filename) {
     return new Promise(function (resolve, reject) {

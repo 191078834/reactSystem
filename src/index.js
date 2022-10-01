@@ -5,13 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import TextInputWithFocusButton from './TextInputWithFocusButton';
 import Todo from'./Todo';
 import TestApp from './useContext/contextDemo'
-
+import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
     <>
     <Todo/>
     <TestApp/>
+    <App/>
     {/* <TextInputWithFocusButton/> */}
     </>
 

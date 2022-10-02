@@ -1,27 +1,28 @@
 import SpellcheckIcon from '@mui/icons-material/Spellcheck';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-export const mainNavBarItms = [
+export const mainNavBarItems = [
     {
         id: 0,
         icon: <SpellcheckIcon />,
         label: '単語リスト',
-        route: 'route'
+        route: 'wordlist'
 
 
     },
     {
         id: 1,
-        icon: '',
-        label: '  毎日単語',
-        route: 'route'
+        icon: <ArrowForwardIosIcon />,
+        label: '毎日単語',
+        route: 'everydaylist'
 
 
     },
     {
         id: 2,
-        icon: '',
+        icon: <ArrowForwardIosIcon />,
         label: '忘れた単語',
-        route: 'route'
+        route: 'forgetlist'
 
 
     }

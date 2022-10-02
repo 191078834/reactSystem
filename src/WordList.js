@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { Box, Container } from "@mui/system";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
@@ -7,12 +7,13 @@ import TodoList from "./TodoList";
 import useDataApi from "./usePersonalState";
 // import reducers from "./redux/reducers";
 // import TextInputWithFocusButton from "./TextInputWithFocusButton";
-function Todo() {
+function WordList() {
   const { isLoading, isError, data, doFetch } = useDataApi("", "");
   const [text, setText] = useState("");
 
   return (
-    <Container maxWidth="lg">
+    <div style={{marginLeft:'500px'}}>
+    <Container maxWidth="lg" sx={{ml:'500px'}}>
       <Box
         component="form"
         onSubmit={(e) => {
@@ -35,6 +36,8 @@ function Todo() {
       </Box>
       <TodoList data={data} isLoading={isLoading} />
     </Container>
+ 
+    </div>
   );
 }
-export default Todo;
+export default WordList;

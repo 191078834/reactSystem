@@ -7,15 +7,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { mainNavBarItms } from './const/navbarListItems';
+import { mainNavBarItems } from './const/navbarListItems';
+import { useNavigate } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
-    <div>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -23,6 +23,8 @@ const Navbar = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            backgroundColor: '#CC0066',
+            color: 'rgb(255, 255, 255, 0.7)'
           },
         }}
         variant="permanent"
@@ -31,32 +33,23 @@ const Navbar = () => {
         <Toolbar />
         <Divider />
         <List>
-          {mainNavBarItms.map((text, index) => (
-            <ListItem key={text.id} disablePadding>
+          {mainNavBarItems.map((item, index) => (
+            <ListItem button 
+                      key={item.id} 
+                      disablePadding 
+                      onClick={()=> navigate(item.route)}
+            >
               <ListItemButton>
-                <ListItemIcon>
-                  {text.icon}
+                <ListItemIcon sx={{ color: 'rgb(255, 255, 255, 0.7)' }}>
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text.label} />
+                <ListItemText primary={item.label} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
         <Divider />
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
-    </div>
   )
 }
 

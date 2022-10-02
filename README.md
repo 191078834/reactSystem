@@ -5,6 +5,7 @@ npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material --force
 
 npm i react-router 
+npm i react-router-dom@6
 
 
 

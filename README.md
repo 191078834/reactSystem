@@ -28,3 +28,6 @@ https://blog.csdn.net/xgangzai/article/details/121186999
 //ES7 React/Redux/GraphQL/React-Native snippets
 rafce 生成函数形式的组件
 rcc 生成类形式的组件
+
+//引っ越し
+https://www.city.yokohama.lg.jp/kanagawa/front/hikkoshi-sumai.html

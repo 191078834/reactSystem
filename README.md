@@ -25,5 +25,6 @@ https://www.jlpt.jp/samples/sample09.html
 https://blog.csdn.net/xgangzai/article/details/121186999
 
 // 安装es7插件
+//ES7 React/Redux/GraphQL/React-Native snippets
 rafce 生成函数形式的组件
 rcc 生成类形式的组件

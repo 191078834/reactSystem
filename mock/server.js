@@ -59,10 +59,8 @@ const getParams = (url, name) => {
     //console.log(index);
     if (index !== -1) {
         const newArr = url.substring(index + 1).split('&');
-        //console.log(newArr)
         for (var i = 0; i < newArr.length; i++) {
             const itemArr = newArr[i].split('=');
-            //console.log(itemArr)
             if (itemArr[0] == name) {
                 return itemArr[1];
             }
@@ -109,7 +107,7 @@ let data = Mock.mock({
  * @param  {[type]} req  [客户端发过来的请求所带数据]
  * @param  {[type]} res  [服务端的相应对象，可使用res.send返回数据，res.json返回json数据，res.down返回下载文件]
  */
-app.all('/search\/text/', function (req, res) {
+app.all('/wordlist/', function (req, res) {
     /**
      * mockjs中属性名‘|’符号后面的属性为随机属性，数组对象后面的随机属性为随机数组数量，正则表达式表示随机规则，+1代表自增
      */

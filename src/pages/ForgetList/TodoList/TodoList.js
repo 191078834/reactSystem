@@ -1,8 +1,9 @@
 import React from "react";
+
 function TodoList(props) {
   return (
     <>
-      <ul>
+     
         {props.isLoading ? (
           <div style={{ background: "blue" }}>IsLoading Status</div>
         ) : props.data ? (
@@ -19,7 +20,7 @@ function TodoList(props) {
         ) : (
           <div></div>
         )}
-      </ul>
+      
       
     </>
   );

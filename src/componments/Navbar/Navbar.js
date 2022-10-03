@@ -8,12 +8,12 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { mainNavBarItems } from './const/navbarListItems';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const drawerWidth = 220;
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   return (
       <Drawer
@@ -37,7 +37,7 @@ const Navbar = () => {
             <ListItem button 
                       key={item.id} 
                       disablePadding 
-                      onClick={()=> navigate(item.route)}
+                      onClick={()=> {navigate(item.route) }}
             >
               <ListItemButton>
                 <ListItemIcon sx={{ color: 'rgb(255, 255, 255, 0.7)' }}>

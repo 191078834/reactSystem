@@ -23,7 +23,7 @@ function TestApp() {
 
 function Toolbar(props) {
     return (
-        <div style={{display:'flex'}}>   
+        <div style={{marginLeft:'500px'}}>   
             <ThemedButton />
         </div>
     );

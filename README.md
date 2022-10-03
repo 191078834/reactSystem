@@ -31,3 +31,6 @@ rcc 生成类形式的组件
 
 //引っ越し
 https://www.city.yokohama.lg.jp/kanagawa/front/hikkoshi-sumai.html
+
+//ガスと電気
+https://www.tepco.co.jp/ep/private/moving/index_moving.html

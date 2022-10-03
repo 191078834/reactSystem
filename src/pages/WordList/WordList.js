@@ -3,17 +3,15 @@ import { useState } from "react";
 import { Box, Container } from "@mui/system";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
-import TodoList from "../ForgetList/TodoList/TodoList";
+import TodoList from "./TodoList/TodoList"
 import useDataApi from "../../api/usePersonalState";
-// import reducers from "./redux/reducers";
 // import TextInputWithFocusButton from "./TextInputWithFocusButton";
 function WordList() {
   const { isLoading, isError, data, doFetch } = useDataApi("http://localhost:8090/wordlist", "");
   const [text, setText] = useState("");
 
   return (
-    // <div style={{marginLeft:'500px'}}>
-    <Container maxWidth="lg" sx={{ml:'500px'}}>
+    <Container maxWidth="lg" sx={{ml:'300px'}}>
       <Box
         component="form"
         onSubmit={(e) => {
@@ -37,7 +35,6 @@ function WordList() {
       <TodoList data={data} isLoading={isLoading} />
     </Container>
  
-    // </div>
   );
 }
 export default WordList;

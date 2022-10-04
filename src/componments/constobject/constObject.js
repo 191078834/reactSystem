@@ -1,7 +1,7 @@
 export const wordListTitle={
     no: 'NO.',
     word: '単語',
-    hinagara : 'ROMAZI',
+    hinagara : 'ローマ字',
     translate: '中国語'
 
 }

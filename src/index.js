@@ -7,30 +7,28 @@ import {
     Routes,
     Route
   } from "react-router-dom";
-
+import { ThemeProvider } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
 import TextInputWithFocusButton from './TextInputWithFocusButton';
 import WordList from'./pages/WordList/WordList';
 import App from './App';
+import {dashBoardTheme} from "./dashBoardTheme"
 import ForgetList from './pages/ForgetList/ForgetList';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <ThemeProvider　theme={dashBoardTheme}>
     <BrowserRouter>
-    <Routes>
-      <Route path="/*" element={<App />}>
-      <Route path="wordlist" element={<WordList />} />
-      <Route path="everydaylist" element={<TestApp />} />
-      <Route path="forgetlist" element={<ForgetList />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>,
- 
-    // <>
-    // <Todo/>
-    // <TestApp/>
-    // <App/>
+        <Routes>
+          <Route path="/*" element={<App />}>
+          <Route path="wordlist" element={<WordList />} />
+          <Route path="everydaylist" element={<TestApp />} />
+          <Route path="forgetlist" element={<ForgetList />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>,
+  </ThemeProvider>
+   
     // {/* <TextInputWithFocusButton/> */}
-    // </>
 
 
 

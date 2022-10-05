@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Box, Container } from "@mui/system";
 import Input from "@mui/material/Input";
-import Button from "@mui/material/Button";
 import TodoList from "./TodoList/TodoList"
 import useDataApi from "../../api/usePersonalState";
 import CommonButton from "../../componments/common/CommonButton/CommonButton";
@@ -18,7 +17,8 @@ function WordList() {
         sx={{ml:'400px'}}
         onSubmit={(e) => {
           e.preventDefault();
-          doFetch(`http://localhost:8090/wordlist/`);
+          let getParams = `?word=`+ text ;
+          doFetch(`http://localhost:8090/wordlist`+getParams);
         }}
       >
         <Input
@@ -29,7 +29,7 @@ function WordList() {
           }}
           value={text}
         />
-        <CommonButton  variant="contained" color="primary" size="medium">
+        <CommonButton  variant="contained" color="primary" size="medium" type="submit">
           検索
         </CommonButton>
       </Box>

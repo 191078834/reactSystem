@@ -1,8 +1,9 @@
 let express = require('express');    //引入express模块
 let Mock = require('mockjs');        //引入mock模块
 // let React = require('react');
-const fs = require('fs');             //文件管理系统
+const fs = require('fs');          //文件管理系统
 const path = require('path');
+const bodyparser = require('body-parser');    // 引入body-parser模块
 
 // 単語のテキストのパースを設定
 const dirname = __dirname.substring(0, __dirname.lastIndexOf('\\'));
@@ -10,7 +11,7 @@ const dirname = __dirname.substring(0, __dirname.lastIndexOf('\\'));
 function fn(filename) {
     return new Promise(function (resolve, reject) {
         //readFile(path,[encoding],callback)  异步读取文件全部内容
-        console.log(path.join(dirname, filename));
+        console.log('ファイルのパス:⁂⁂⁂',path.join(dirname, filename));
         let content = fs.readFile(path.join(dirname, filename), 'utf8', (err, data) => {
             err ? reject(err) : resolve(data);
         })
@@ -18,7 +19,7 @@ function fn(filename) {
 }
 var datas;
 const wordReadApi = async (fileName) => {
-    let date = new Date()
+    let date = new Date();
     console.log('Read start Time', date.toJSON());
     let FileArrayresult = await fn(fileName).then((result) => {
         var newRowArr = result.split(/\r/);
@@ -41,6 +42,14 @@ wordReadApi('word.txt');
 //============================================================================================================================
 
 let app = express();                //实例化express
+
+//************************************************************* */
+// 拦截所有请求 urlencoded()里的参数是必填的
+// extended:false表示方法内部使用querystring模块处理请求参数的格式
+// extended:true表示方法内部使用第三方模块qs处理请求参数的格式
+// 默认使用extended:false即可满足我们的需求
+//**************************************************************** */
+app.use(bodyparser.urlencoded({extended:false}))
 
 
 var allowCrossDomain = function (req, res, next) {
@@ -113,6 +122,12 @@ app.all('/wordlist/', function (req, res) {
      */
     /* 设置定时器 为了设置isLoad Status */
     // setTimeout(function () { res.json(data); }, 5000);
+
+    //post 获取数据
+    console.log('post',req.body)
+
+    //get获取数据
+    console.log('get', req.query);
     jsonData = { "data": datas }
     res.json(jsonData)
 
@@ -124,5 +139,5 @@ app.all('/wordlist/', function (req, res) {
  * 监听8090端口
  */
 app.listen('8090', () => {
-    console.log('success start')
+    console.log('Api start')
 });

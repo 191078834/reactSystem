@@ -18,8 +18,10 @@ function fn(filename) {
     })
 }
 var datas;
+let date = new Date(2022 ,10,6);
+console.log(date);
 const wordReadApi = async (fileName) => {
-    let date = new Date();
+
     console.log('Read start Time', date.toJSON());
     let FileArrayresult = await fn(fileName).then((result) => {
         var newRowArr = result.split(/\r/);
@@ -31,7 +33,7 @@ const wordReadApi = async (fileName) => {
                                 "word": newElement[0],
                                 "loumaji": newElement[1], 
                                 "translate": newElement[2], 
-                                "putTime":date.getDate()}
+                                "putTime":[date]}
             Allarray.unshift(jsonElement);
         });
         Allarray.pop();

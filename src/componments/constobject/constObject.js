@@ -16,9 +16,9 @@ export const kinyuTableColumns = [
     {
       field: 'loumaji',
       headerName: 'ローマ字',
-      type: 'singleSelect',
-      valueOptions: ['full time', 'part time', 'intern'],
+      // type: 'singleSelect',
       width: 200,
+      editable:true
     },
     {
         field: 'translate',

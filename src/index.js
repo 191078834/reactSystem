@@ -16,7 +16,7 @@ import {dashBoardTheme} from "./dashBoardTheme"
 import ForgetList from './pages/ForgetList/ForgetList';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ThemeProvider　theme={dashBoardTheme}>
+  <ThemeProvider theme={dashBoardTheme}>
     <BrowserRouter>
         <Routes>
           <Route path="/*" element={<App />}>

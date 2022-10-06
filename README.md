@@ -6,8 +6,9 @@ npm install @mui/icons-material --force
 
 npm i react-router 
 npm i react-router-dom@6
-
-
+npm i dayjs
+npm i @mui/x-date-pickers
+npm i @mui/x-data-grid --force
 
 
 typescripts
@@ -34,3 +35,6 @@ https://www.city.yokohama.lg.jp/kanagawa/front/hikkoshi-sumai.html
 
 //ガスと電気
 https://www.tepco.co.jp/ep/private/moving/index_moving.html
+
+//エーラ　を修正
+npm audit fix --force

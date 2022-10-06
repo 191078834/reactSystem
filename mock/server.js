@@ -27,7 +27,11 @@ const wordReadApi = async (fileName) => {
         newRowArr.forEach((element, index) => {
             let newElement = element.replace(/\n/, '').split(/\s/)
             // push /unshift /contact
-            let jsonElement = { "id": index, "word": newElement[0], "hatuou": newElement[1], "translate": newElement[2] }
+            let jsonElement = { "id": index, 
+                                "word": newElement[0],
+                                "loumaji": newElement[1], 
+                                "translate": newElement[2], 
+                                "putTime":date.getDate()}
             Allarray.unshift(jsonElement);
         });
         Allarray.pop();
@@ -60,24 +64,6 @@ var allowCrossDomain = function (req, res, next) {
     next();
 };
 app.use(allowCrossDomain);
-
-// 尚未开发的函数 用来匹配url参数
-const getParams = (url, name) => {
-    //console.log(url,name);
-    const index = url.indexOf('?');
-    //console.log(index);
-    if (index !== -1) {
-        const newArr = url.substring(index + 1).split('&');
-        for (var i = 0; i < newArr.length; i++) {
-            const itemArr = newArr[i].split('=');
-            if (itemArr[0] == name) {
-                return itemArr[1];
-            }
-        }
-    }
-    return null;
-
-}
 
 // create mock data
 let data = Mock.mock({
@@ -128,7 +114,7 @@ app.all('/wordlist/', function (req, res) {
 
     //get获取数据
     console.log('get', req.query);
-    jsonData = { "data": datas }
+    let jsonData = { "data": datas }
     res.json(jsonData)
 
 });

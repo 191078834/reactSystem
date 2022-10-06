@@ -1,8 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
 import Grid from "@mui/material/Grid";
 import { Outlet } from "react-router-dom";
 import Navbar from './componments/Navbar/Navbar';
+import React from 'react'
 
 function App() {
   return (

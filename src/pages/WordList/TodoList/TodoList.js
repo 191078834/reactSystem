@@ -4,6 +4,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import {wordListTitle} from '../../../componments/constobject/constObject';
+import {kinyuTableColumns}   from '../../../componments/constobject/constObject';
+import DataListDisp from  './DataListDisp';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -28,7 +30,7 @@ function TodoList(props) {
           </Box>
         ) : props.data ? (
           <Box sx={{ flexGrow: 1 ,marginTop:'50px'}}>
-            <Grid container spacing={2} id={2}>
+            {/* <Grid container spacing={2} id={2}>
               <Grid item xs={1}>
                 <Item sx={{fontSize:"15px"}}>{wordListTitle.no}</Item>
               </Grid>
@@ -41,8 +43,8 @@ function TodoList(props) {
               <Grid item xs={4}>
                 <Item sx={{fontSize:"15px"}}>{wordListTitle.translate}</Item>
               </Grid>
-            </Grid>
-            {props.data.map((item, index) => ( 
+            </Grid> */}
+            {/* {props.data.map((item, index) => ( 
               <Grid container spacing={2}key={index}>
                 <Grid item xs={1}>
                   <Item>{item.id}</Item>
@@ -57,7 +59,8 @@ function TodoList(props) {
                   <Item>{item.translate}</Item>
                 </Grid>
               </Grid>
-            ))}
+            ))} */}
+            <DataListDisp rows={props.data} columns={kinyuTableColumns} />
             </Box>
         ) : (
           <Box sx={{ flexGrow: 1 ,marginTop:'50px'}}>

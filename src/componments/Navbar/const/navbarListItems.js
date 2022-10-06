@@ -1,3 +1,4 @@
+import * as React from 'react';
 import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -23,7 +24,6 @@ export const mainNavBarItems = [
         icon: <ArrowForwardIosIcon />,
         label: '忘れた単語',
         route: 'forgetlist'
-
 
     }
 ]

@@ -1,7 +1,7 @@
  //現在時間のStringを取る
  
- const getTimeFormat =()=>{
-    const date = new Date();
+ const getTimeFormat =(date)=>{
+    // const date = new Date();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const strDate = date.getDate().toString().padStart(2, '0');
     // const starHours = date.getHours().toString().padStart(2, '0');

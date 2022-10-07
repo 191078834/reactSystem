@@ -1,3 +1,6 @@
+import getTimeFormat from "../../tools/utils";
+import { format } from 'date-fns'
+import { ja } from 'date-fns/locale'
 export const wordListTitle={
     id: 'NO.',
     word: '単語',
@@ -33,5 +36,24 @@ export const kinyuTableColumns = [
         headerName: '記入時間',
         type: 'date',
         width: 200,
+        valueFormatter: (params)=>{
+          let date = new Date();
+          if(typeof params.value==""){
+            return format(date, 'dd/yyyy/MM(eee)', {locale: ja});
+          }else{
+            let year =stringToNumber(params.value.slice(0,4));
+            let month = stringToNumber(params.value.slice(5,7))-1;
+            let day = stringToNumber(params.value.slice(8,10));
+            let itemDate = new Date(year,month,day);
+            
+           return format(itemDate, 'yyyy/MM/dd(eee)', {locale: ja})
+          }
+        }
       },
   ];
+
+  const stringToNumber=(str)=>{
+
+    let num = parseInt(str);
+    return num
+  }

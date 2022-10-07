@@ -9,7 +9,7 @@ npm i react-router-dom@6
 npm i dayjs
 npm i @mui/x-date-pickers
 npm i @mui/x-data-grid --force
-
+npm i date-fns --force
 
 typescripts
 https://www.zadmei.com/zrzykdsy.html

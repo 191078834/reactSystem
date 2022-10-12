@@ -1,4 +1,3 @@
-import getTimeFormat from "../../tools/utils";
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
 export const wordListTitle={
@@ -14,7 +13,7 @@ export const kinyuTableColumns = [
     {
       field: 'word',
       headerName: '単語',
-      width: 300,
+      width: 200,
     },
     {
       field: 'loumaji',
@@ -28,7 +27,7 @@ export const kinyuTableColumns = [
         headerName: '翻訳',
         type: 'singleSelect',
         valueOptions: ['full time', 'part time', 'intern'],
-        width: 250,
+        width: 400,
         editable:true
     },
     {

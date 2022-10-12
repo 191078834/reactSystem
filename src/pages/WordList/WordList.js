@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Box, Container, maxWidth } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import TextField from '@mui/material/TextField';
 import TodoList from "./TodoList/TodoList"
 import useDataApi from "../../api/usePersonalState";

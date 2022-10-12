@@ -38,3 +38,6 @@ https://www.tepco.co.jp/ep/private/moving/index_moving.html
 
 //エーラ　を修正
 npm audit fix --force
+
+====【と】の用法===
+https://baijiahao.baidu.com/s?id=1736041353579840254&wfr=spider&for=pc

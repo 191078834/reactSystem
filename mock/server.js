@@ -18,8 +18,9 @@ function fn(filename) {
     })
 }
 var datas;
-let date = new Date(2022,10,6);
-console.log(date);
+const date = new Date();
+const year = date.getFullYear().toString()
+
 const wordReadApi = async (fileName) => {
 
     console.log('Read start Time', date.toJSON());
@@ -33,7 +34,7 @@ const wordReadApi = async (fileName) => {
                                 "word": newElement[0],
                                 "loumaji": newElement[1], 
                                 "translate": newElement[2], 
-                                "putTime":"2022/01/07"}
+                                "putTime":year+"/"+ newElement[3]}
             Allarray.unshift(jsonElement);
         });
         Allarray.pop();

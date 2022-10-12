@@ -16,7 +16,7 @@ git commit -m ''
 git push
 
 删除本地文件 即使下次pull 也不会把本地删除的文件更新回来
- git rm fileName
+git rm fileName
 git add fileName
 git commit -m ''
 git push

@@ -30,14 +30,19 @@ const wordReadApi = async (fileName) => {
         newRowArr.forEach((element, index) => {
             let newElement = element.replace(/\n/, '').split(/\s/)
             // push /unshift /contact
-            let jsonElement = { "id": index, 
+            let jsonElement = { "id": index+1, 
                                 "word": newElement[0],
                                 "loumaji": newElement[1], 
                                 "translate": newElement[2], 
                                 "putTime":year+"/"+ newElement[3]}
-            Allarray.unshift(jsonElement);
+            Allarray.push(jsonElement);
+            
         });
-        Allarray.pop();
+        //删除最后一个元素
+        // Allarray.pop();
+        //删除第一个元素
+        Allarray.shift()
+        console.log(Allarray);
         return Allarray
     });
     datas = FileArrayresult;

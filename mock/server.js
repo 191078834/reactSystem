@@ -42,7 +42,6 @@ const wordReadApi = async (fileName) => {
         // Allarray.pop();
         //删除第一个元素
         Allarray.shift()
-        console.log(Allarray);
         return Allarray
     });
     datas = FileArrayresult;

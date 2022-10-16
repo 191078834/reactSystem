@@ -1,12 +1,20 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import _ from 'lodash';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import Collapse from '@mui/material/Collapse';
 import { DataGrid,GridToolbar } from '@mui/x-data-grid';
-import CommonButton from "../../../componments/common/CommonButton/CommonButton";
+import CommonButton from '../../../componments/common/CommonButton/CommonButton';
+import CommonDialog from '../../../componments/common/CommonDialog/CommonDialog'
 export default function DataListDisp(props) {
 
   const [rows, setsRows] = React.useState(props.rows);
+  const [alertContrl, setAlertContrl] = React.useState({
+                                        alertOpen:false, 
+                                        alertSeverity:'success', 
+                                        alertMessage:'nasi'
+                                      });
   let sesRows = React.useRef([]);
 
   // cellを更新
@@ -14,27 +22,42 @@ export default function DataListDisp(props) {
     let newValue = _.cloneDeep(rows);
     let reaId =rows.findIndex((element)=>element.id===changeValue.id);
     newValue[reaId][changeValue.field] =changeValue.value;
-    console.log(newValue[5]);
     setsRows(newValue);
   }
 
   //cellを削除
   const deleteCell =()=>{
-    if(sesRows.current.length === 0) return;
+    if(sesRows.current.length === 0){
+
+      return;
+    } 
     //已经被删除过多的数据表
     const deletedNewRows =rows.filter((element)=>sesRows.current.indexOf(element.id) === -1);
+    //delete message display
+    setAlertContrl({
+      alertOpen:true, 
+      alertSeverity:'success', 
+      alertMessage:'delete success'});
     setsRows(deletedNewRows);
   }
+  //更新ボタン
+const updateCell = ()=>{
+  if(sesRows.current.length===0){
+
+  }
+}
+
 
   return (
-    <Box sx={{ height: 800, width: '100%' }}>
+    <Box sx={{ height: 750, width: '100%' }}>
        <Stack direction="row" spacing={3} justifyContent="flex-end">
-        <CommonButton  variant="contained" color="warning" size="medium" type="submit" onClick={deleteCell}>
-          削除
-        </CommonButton>
-        <CommonButton  variant="contained" color="primary" size="medium" type="submit" >
-          確認
-        </CommonButton>
+        <Collapse in={alertContrl.alertOpen} sx={{width:'100%'}}>
+          <Alert severity={alertContrl.alertSeverity} variant="outlined" icon={false}> {alertContrl.alertMessage}</Alert>
+        </Collapse>
+        <CommonDialog deleteCell={deleteCell} actionButtonName={'削除'} color='warning'/>
+        <CommonDialog deleteCell={updateCell} actionButtonName={'更新'} color='primary'/>
+        
+
       </Stack>
 
       <DataGrid
@@ -52,12 +75,8 @@ export default function DataListDisp(props) {
       />
       
       <Stack direction="row" spacing={3} justifyContent="flex-end">
-        <CommonButton  variant="contained" color="warning" size="medium" type="submit" onClick={deleteCell}>
-          削除
-        </CommonButton>
-        <CommonButton  variant="contained" color="primary" size="medium" type="submit" >
-          確認
-        </CommonButton>
+        <CommonDialog deleteCell={deleteCell} actionButtonName={'削除'} color='warning'/>
+        <CommonDialog deleteCell={updateCell} actionButtonName={'更新'} color='primary'/>
       </Stack>
     </Box>
   );

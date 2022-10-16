@@ -28,7 +28,10 @@ export default function DataListDisp(props) {
   //cellを削除
   const deleteCell =()=>{
     if(sesRows.current.length === 0){
-
+      setAlertContrl({
+        alertOpen:true, 
+        alertSeverity:'warning', 
+        alertMessage:'チェックしない'});
       return;
     } 
     //已经被删除过多的数据表
@@ -37,7 +40,7 @@ export default function DataListDisp(props) {
     setAlertContrl({
       alertOpen:true, 
       alertSeverity:'success', 
-      alertMessage:'delete success'});
+      alertMessage:'削除をしました'});
     setsRows(deletedNewRows);
   }
   //更新ボタン
@@ -52,7 +55,7 @@ const updateCell = ()=>{
     <Box sx={{ height: 750, width: '100%' }}>
        <Stack direction="row" spacing={3} justifyContent="flex-end">
         <Collapse in={alertContrl.alertOpen} sx={{width:'100%'}}>
-          <Alert severity={alertContrl.alertSeverity} variant="outlined" icon={false}> {alertContrl.alertMessage}</Alert>
+          <Alert severity={alertContrl.alertSeverity} variant="standard"> {alertContrl.alertMessage}</Alert>
         </Collapse>
         <CommonDialog deleteCell={deleteCell} actionButtonName={'削除'} color='warning'/>
         <CommonDialog deleteCell={updateCell} actionButtonName={'更新'} color='primary'/>

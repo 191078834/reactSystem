@@ -14,6 +14,7 @@ export const kinyuTableColumns = [
       field: 'word',
       headerName: '単語',
       width: 200,
+      editable:true
     },
     {
       field: 'loumaji',

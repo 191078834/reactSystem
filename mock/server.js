@@ -63,7 +63,8 @@ let app = express();                //实例化express
 app.use(bodyparser.urlencoded({extended:false}))
 
 
-var allowCrossDomain = function (req, res, next) {
+/*为app添加中间件处理跨域请求*/
+const allowCrossDomain = (req, res, next) =>{
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -126,7 +127,6 @@ app.all('/wordlist/', function (req, res) {
 
 });
 
-/*为app添加中间件处理跨域请求*/
 
 /**
  * 监听8090端口

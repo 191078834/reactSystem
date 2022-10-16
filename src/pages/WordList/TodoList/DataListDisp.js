@@ -16,12 +16,23 @@ export default function DataListDisp(props) {
                                         alertMessage:'nasi'
                                       });
   let sesRows = React.useRef([]);
+  let updateRef = React.useRef([])
 
   // cellを更新
   const changeCell =(changeValue)=>{
     let newValue = _.cloneDeep(rows);
     let reaId =rows.findIndex((element)=>element.id===changeValue.id);
+    //更新新的cell
+    changeValue.row[changeValue.field]=changeValue.value;
+    updateRef.current.forEach((element,index)=>{
+      element.id===changeValue.row.id?updateRef.current[index]=changeValue.row:updateRef.current.push(changeValue.row);
+  })
+    // updateRef.current = changeValue.row;
+    
+    
     newValue[reaId][changeValue.field] =changeValue.value;
+    console.log(updateRef.current)
+
     setsRows(newValue);
   }
 

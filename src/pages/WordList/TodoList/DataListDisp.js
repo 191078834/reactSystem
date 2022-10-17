@@ -21,7 +21,7 @@ export default function DataListDisp(props) {
   const changeCell = (changeValue) => {
     let newValue = _.cloneDeep(rows);
     let reaId = rows.findIndex((element) => element.id === changeValue.id);
-    //更新新的cell
+    //更新新的cell Status
     changeValue.row[changeValue.field] = changeValue.value;
     newValue[reaId][changeValue.field] = changeValue.value;
     setsRows(newValue);
@@ -95,7 +95,7 @@ export default function DataListDisp(props) {
 
       <Stack direction="row" spacing={3} justifyContent="flex-end">
         <CommonDialog deleteCell={deleteCell} actionButtonName={'削除'} color='warning' />
-        <CommonDialog deleteCell={updateCell} actionButtonName={'更新'} color='primary' />
+        <CommonDialog updateCell={updateCell} actionButtonName={'更新'} color='primary' />
       </Stack>
     </Box>
   );

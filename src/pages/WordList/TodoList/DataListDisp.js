@@ -1,12 +1,13 @@
+import _ from 'lodash';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import _ from 'lodash';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Collapse from '@mui/material/Collapse';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import useWordListActionState from '../../../api/useWordListActionState'
 import CommonDialog from '../../../componments/common/CommonDialog/CommonDialog'
+
 export default function DataListDisp(props) {
 
   const [rows, setsRows] = React.useState(props.rows);
@@ -16,8 +17,7 @@ export default function DataListDisp(props) {
     alertMessage: 'nasi'
   });
   let sesRows = React.useRef([]);
-
-  const {doPostFetch} = useWordListActionState([],[]);
+  const { doPostFetch } = useWordListActionState([], []);
 
   // cellを仮更新
   const changeCell = (changeValue) => {
@@ -42,7 +42,8 @@ export default function DataListDisp(props) {
 
     //削除したデータ
     let postDeletedData = rows.filter((element) => sesRows.current.indexOf(element.id) !== -1);
-   
+    doPostFetch(postDeletedData);
+
     //已经被删除过多的数据表
     const deletedNewRows = rows.filter((element) => sesRows.current.indexOf(element.id) === -1);
 

@@ -38,7 +38,7 @@ export const kinyuTableColumns = [
         width: 200,
         valueFormatter: (params)=>{
           let date = new Date();
-          if(typeof params.value==""){
+          if(typeof params.value===""){
             return format(date, 'dd/yyyy/MM(eee)', {locale: ja});
           }else{
             let year =stringToNumber(params.value.slice(0,4));

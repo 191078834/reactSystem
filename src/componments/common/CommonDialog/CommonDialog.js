@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const CommonDialog=(props)=>{
+const CommonDialog = (props) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,16 +20,22 @@ const CommonDialog=(props)=>{
   };
 
   const handleAgree = () => {
-    props.deleteCell();
+    if (props.action === 'wordRowDelete') {
+      props.deleteCell();
+    }
+    if (props.action === 'wordRoeUpdate') {
+      props.updateCell();
+    }
     setOpen(false);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-       <CommonButton  variant="contained" color={props.color} size="medium" type="submit"  onClick={handleClickOpen}>
+      <CommonButton variant="contained" color={props.color} size="medium" type="submit" onClick={handleClickOpen}>
         {props.actionButtonName}
       </CommonButton>
       <Dialog

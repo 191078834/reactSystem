@@ -1,26 +1,27 @@
 import { useEffect, useState, useReducer } from "react";
 
 //reducer
-const dataFetchReducer = (preState, action) => {
+const dataFetchReducer = (State, action) => {
 
   const { type } = action;
+  
   switch (type) {
     case "FETCH_INIT":
       return {
-        ...preState,
+        ...State,
         isLoading: false,
         isError: false,
       };
     case "FETCH_SUCCESS":
       return {
-        ...preState,
+        ...State,
         isLoading: false,
         isError: false,
         data: action.payload,
       };
     case "FETCH_FAILURE":
       return {
-        ...preState,
+        ...State,
         isLoading: false,
         isError: true,
       };
@@ -50,13 +51,12 @@ const useDataApi = (initialUrl, initialData) => {
           method: "GET",
           mode: "cors",
           headers: {
-            Accept: "application/json,text/plain,*/*",
+            "Accept": "application/json,text/plain,*/*",
           },
         })
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data
+         );
 
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (error) {

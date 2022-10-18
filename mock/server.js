@@ -1,9 +1,8 @@
 let express = require('express');    //引入express模块
 let Mock = require('mockjs');        //引入mock模块
-// let React = require('react');
 const fs = require('fs');          //文件管理系统
 const path = require('path');
-const bodyparser = require('body-parser');    // 引入body-parser模块
+const bodyParser = require('body-parser');    // 引入body-parser模块
 
 // 単語のテキストのパースを設定
 const dirname = __dirname.substring(0, __dirname.lastIndexOf('\\'));
@@ -11,7 +10,7 @@ const dirname = __dirname.substring(0, __dirname.lastIndexOf('\\'));
 function fn(filename) {
     return new Promise(function (resolve, reject) {
         //readFile(path,[encoding],callback)  异步读取文件全部内容
-        console.log('ファイルのパス:⁂⁂⁂',path.join(dirname, filename));
+        console.log('ファイルのパス:⁂⁂⁂', path.join(dirname, filename));
         let content = fs.readFile(path.join(dirname, filename), 'utf8', (err, data) => {
             err ? reject(err) : resolve(data);
         })
@@ -30,13 +29,15 @@ const wordReadApi = async (fileName) => {
         newRowArr.forEach((element, index) => {
             let newElement = element.replace(/\n/, '').split(/\s/)
             // push /unshift /contact
-            let jsonElement = { "id": index+1, 
-                                "word": newElement[0],
-                                "loumaji": newElement[1], 
-                                "translate": newElement[2], 
-                                "putTime":year+"/"+ newElement[3]}
+            let jsonElement = {
+                "id": index + 1,
+                "word": newElement[0],
+                "loumaji": newElement[1],
+                "translate": newElement[2],
+                "putTime": year + "/" + newElement[3]
+            }
             Allarray.push(jsonElement);
-            
+
         });
         //删除最后一个元素
         // Allarray.pop();
@@ -60,11 +61,12 @@ let app = express();                //实例化express
 // extended:true表示方法内部使用第三方模块qs处理请求参数的格式
 // 默认使用extended:false即可满足我们的需求
 //**************************************************************** */
-app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
 /*为app添加中间件处理跨域请求*/
-const allowCrossDomain = (req, res, next) =>{
+const allowCrossDomain = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -117,9 +119,6 @@ app.all('/wordlist/', function (req, res) {
     /* 设置定时器 为了设置isLoad Status */
     // setTimeout(function () { res.json(data); }, 5000);
 
-    //post 获取数据
-    console.log('post',req.body)
-
     //get获取数据
     console.log('get', req.query);
     let jsonData = { "data": datas }
@@ -127,6 +126,10 @@ app.all('/wordlist/', function (req, res) {
 
 });
 
+app.post('/wordlist/update', (req, res) => {
+    console.log('reqBody', req.body);
+    res.json({ data: 1, status: "ok" });
+})
 
 /**
  * 监听8090端口

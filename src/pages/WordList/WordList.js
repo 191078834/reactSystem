@@ -9,7 +9,7 @@ import ResponsiveDatePickers from "../../componments/common/ResponsiveDatePicker
 // import TextInputWithFocusButton from "./TextInputWithFocusButton";
 function WordList() {
   const { isLoading, isError, data, doFetch } = useDataApi("http://localhost:8090/wordlist", "");
-  const [text, setText] = useState("");
+  const [text, setText] = useState();
 
   return (
     <Container maxWidth="xl" sx={{ml:'100px'}} >

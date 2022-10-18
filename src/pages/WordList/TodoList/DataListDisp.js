@@ -14,10 +14,10 @@ export default function DataListDisp(props) {
   const [alertContrl, setAlertContrl] = React.useState({
     alertOpen: false,
     alertSeverity: 'success',
-    alertMessage: 'nasi'
+    alertMessage: ''
   });
   let sesRows = React.useRef([]);
-  const { doPostFetch } = useWordListActionState([], []);
+  const { isLoading, isError, doPostFetch } = useWordListActionState();
 
   // cellを仮更新
   const changeCell = (changeValue) => {
@@ -69,6 +69,13 @@ export default function DataListDisp(props) {
     // 仮fetchのデータ
     let postData = rows.filter((element) => sesRows.current.indexOf(element.id) !== -1)
     doPostFetch(postData);
+    if(isLoading===false&&isError===false){
+      setAlertContrl({
+        alertOpen: true,
+        alertSeverity: 'success',
+        alertMessage: '更新しました'
+      });
+    }
   }
 
 

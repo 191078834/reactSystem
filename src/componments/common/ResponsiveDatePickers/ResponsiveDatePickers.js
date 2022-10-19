@@ -13,12 +13,15 @@ const ResponsiveDatePickers = (props, ref) => {
 
   const locale = ["ja"];
   const [value, setValue] = React.useState(format(new Date(), 'yyyy/MM/dd', { locale: ja }));
-  const childRef = React.useRef(value);
+  let childRef = React.useRef(value);
 
-  React.useImperativeHandle(ref, ()=>({
-    getValue:()=>{childRef.current=value;
-                return childRef.current}}
-  ))
+
+  React.useImperativeHandle(ref, () => {
+    return {
+      getValue: () => childRef.current
+    }
+  }
+  )
 
   return (
 
@@ -26,13 +29,14 @@ const ResponsiveDatePickers = (props, ref) => {
       <DatePicker
         value={value}
         onChange={(newValue) => {
-         
+
           setValue(newValue);
         }}
         renderInput={(params) => (
 
-          <TextField {...params}  />
+          <TextField inputRef={childRef} {...params} />
         )}
+      
       />
     </LocalizationProvider>
   );

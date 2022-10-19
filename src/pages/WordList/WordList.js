@@ -10,6 +10,9 @@ import ResponsiveDatePickers from "../../componments/common/ResponsiveDatePicker
 function WordList() {
   const { isLoading, isError, data, doFetch } = useDataApi("http://localhost:8090/wordlist", "");
   const [text, setText] = useState();
+  let fromTimeRef = React.useRef([]);
+  let toTimeRef = React.useRef([]);
+ 
 
   return (
     <Container maxWidth="xl" sx={{ml:'100px'}} >
@@ -19,7 +22,8 @@ function WordList() {
         onSubmit={(e) => {
           e.preventDefault();
           let getParams = `?word=`+ text ;
-          doFetch(`http://localhost:8090/wordlist`+getParams);
+          console.log(toTimeRef.current.getValue())
+          // doFetch(`http://localhost:8090/wordlist`+getParams);
         }}
       >
         <TextField 
@@ -30,9 +34,9 @@ function WordList() {
           }}
           value={text}
         />
-         <ResponsiveDatePickers/>
-         <ResponsiveDatePickers/>
-        <CommonButton  variant="contained" color="primary" size="large" type="submit">
+         <ResponsiveDatePickers ref={fromTimeRef} />
+         <ResponsiveDatePickers ref={toTimeRef} />
+        <CommonButton  variant="contained" color="primary" size="large" type="submit" >
           検索
         </CommonButton>
        
@@ -43,4 +47,4 @@ function WordList() {
  
   );
 }
-export default WordList;
+export default WordList

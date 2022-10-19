@@ -54,7 +54,6 @@ const useWordListActionState = (initialUrl = "http://localhost:8090/wordlist/upd
                     body: JSON.stringify({ data: postData })
                 }).then((res) => res.json())
                     .then((data) => data)
-                console.log(resData.status,1111111111111)
                 resData.status === "ok" ? dispatch({ type: "FETCH_UPDATE_SUCCESS" }) : dispatch({ type: "FETCH_UPDATE_FAILURE" });
             } catch (error) {
                 dispatch({ type: "FETCH_FAILURE" });

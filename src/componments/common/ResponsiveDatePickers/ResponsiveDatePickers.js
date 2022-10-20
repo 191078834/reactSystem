@@ -18,7 +18,7 @@ const ResponsiveDatePickers = (props, ref) => {
 
   React.useImperativeHandle(ref, () => {
     return {
-      getValue: () => childRef.current.value
+      getValue: () => childRef.value
     }
   }
   )

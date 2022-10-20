@@ -22,6 +22,7 @@ function WordList() {
         onSubmit={(e) => {
           e.preventDefault();
           let getParams = `?word=`+ text ;
+          console.log(fromTimeRef.current.getValue())
           console.log(toTimeRef.current.getValue())
           // doFetch(`http://localhost:8090/wordlist`+getParams);
         }}

@@ -18,7 +18,7 @@ const ResponsiveDatePickers = (props, ref) => {
 
   React.useImperativeHandle(ref, () => {
     return {
-      getValue: () => childRef.current
+      getValue: () => childRef.value
     }
   }
   )
@@ -28,15 +28,14 @@ const ResponsiveDatePickers = (props, ref) => {
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale[0]}>
       <DatePicker
         value={value}
+        inputRef={(element) => childRef = element}
         onChange={(newValue) => {
-
           setValue(newValue);
         }}
         renderInput={(params) => (
-
-          <TextField inputRef={childRef} {...params} />
+          <TextField  {...params} />
         )}
-      
+
       />
     </LocalizationProvider>
   );

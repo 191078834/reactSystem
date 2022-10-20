@@ -27,13 +27,14 @@ const ResponsiveDatePickers = (props, ref) => {
 
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale[0]}>
       <DatePicker
+        mask="____/__/__"
         value={value}
         inputRef={(element) => childRef = element}
         onChange={(newValue) => {
           setValue(newValue);
         }}
         renderInput={(params) => (
-          <TextField  {...params} />
+          <TextField  {...params} onChange={(e)=>{e.preventDefault()} }/>
         )}
 
       />

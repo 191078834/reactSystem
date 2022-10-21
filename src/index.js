@@ -9,7 +9,7 @@ import {
   } from "react-router-dom";
 import {dashBoardTheme} from "./dashBoardTheme"
 
-import App from './App';
+import App from './pages/App';
 import TestApp from './pages/TestApp/TestApp';
 import ForgetList from './pages/ForgetList/ForgetList';
 import WordList from'./pages/WordList/WordList';

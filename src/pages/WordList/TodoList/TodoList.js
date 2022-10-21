@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import { wordListTitle } from '../../../componments/constobject/constObject';
 import { kinyuTableColumns } from '../../../componments/constobject/constObject';
 import DataListDisp from './DataListDisp';
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,7 +19,7 @@ function TodoList(props) {
     <Box>
       <Grid container spacing={2} id={2}>
 
-        {props.isLoading ? (
+        { props.isError === true ? (
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -28,29 +27,13 @@ function TodoList(props) {
               </Grid>
             </Grid>
           </Box>
-        ) : props.data ? (
-          <Box sx={{ flexGrow: 1, marginTop: '50px' }}>
+        ) : (
 
+          <Box sx={{ flexGrow: 1, marginTop: '50px' }} key={props.data}>
             <DataListDisp rows={props.data} columns={kinyuTableColumns} />
           </Box>
-        ) : (
-          <Box sx={{ flexGrow: 1, marginTop: '50px' }}>
-            <Grid container spacing={2} id={2}>
-              <Grid item xs={1}>
-                <Item sx={{ fontSize: "15px" }}>{wordListTitle.no}</Item>
-              </Grid>
-              <Grid item xs={3}>
-                <Item sx={{ fontSize: "15px" }}>{wordListTitle.word}</Item>
-              </Grid>
-              <Grid item xs={4}>
-                <Item sx={{ fontSize: "15px" }}>{wordListTitle.hinagara}</Item>
-              </Grid>
-              <Grid item xs={4}>
-                <Item sx={{ fontSize: "15px" }}>{wordListTitle.translate}</Item>
-              </Grid>
-            </Grid>
-          </Box>
-        )}
+        )
+        }
 
 
       </Grid>

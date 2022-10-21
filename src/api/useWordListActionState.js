@@ -40,10 +40,11 @@ const useWordListActionState = (initialUrl = "http://localhost:8090/wordlist/upd
     });
 
     useEffect(() => {
-
+        let didCancel = false;
         const doUpdateFetch = async () => {
             try {
-                dispatch({ type: "FETCH_UPDATE_INIT" })
+                if(!didCancel){dispatch({ type: "FETCH_UPDATE_INIT" })}
+                
                 const resData = await fetch(url, {
                     method: "POST",
                     mode: "cors",
@@ -56,7 +57,7 @@ const useWordListActionState = (initialUrl = "http://localhost:8090/wordlist/upd
                     .then((data) => data)
                 resData.status === "ok" ? dispatch({ type: "FETCH_UPDATE_SUCCESS" }) : dispatch({ type: "FETCH_UPDATE_FAILURE" });
             } catch (error) {
-                dispatch({ type: "FETCH_FAILURE" });
+                dispatch({ type: "FETCH_UPDATE_FAILURE" });
             }
 
         }

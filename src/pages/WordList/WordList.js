@@ -6,9 +6,8 @@ import TodoList from "./TodoList/TodoList"
 import useDataApi from "../../api/usePersonalState";
 import CommonButton from "../../componments/common/CommonButton/CommonButton";
 import ResponsiveDatePickers from "../../componments/common/ResponsiveDatePickers/ResponsiveDatePickers";
-// import TextInputWithFocusButton from "./TextInputWithFocusButton";
 function WordList() {
-  const { isLoading, isError, data, doFetch } = useDataApi("http://localhost:8090/wordlist", "");
+  const { isLoading, isError, data, doFetch } = useDataApi("http://localhost:8090/wordlist", []);
   const [text, setText] = useState();
   let fromTimeRef = React.useRef([]);
   let toTimeRef = React.useRef([]);

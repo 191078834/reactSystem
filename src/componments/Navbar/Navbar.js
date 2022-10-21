@@ -33,7 +33,7 @@ const Navbar = () => {
         <Toolbar />
         <Divider />
         <List>
-          {mainNavBarItems.map((item, index) => (
+          {mainNavBarItems.map((item) => (
             <ListItem button 
                       key={item.id} 
                       disablePadding 

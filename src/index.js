@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import TestApp from './pages/TestApp/TestApp';
+import { ThemeProvider } from '@mui/material/styles';
+import reportWebVitals from './reportWebVitals';
 import {
     BrowserRouter ,
     Routes,
     Route
   } from "react-router-dom";
-import { ThemeProvider } from '@mui/material/styles';
-import reportWebVitals from './reportWebVitals';
-import WordList from'./pages/WordList/WordList';
-import App from './App';
 import {dashBoardTheme} from "./dashBoardTheme"
+
+import App from './App';
+import TestApp from './pages/TestApp/TestApp';
 import ForgetList from './pages/ForgetList/ForgetList';
+import WordList from'./pages/WordList/WordList';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={dashBoardTheme}>
@@ -26,7 +28,7 @@ root.render(
       </Routes>
     </BrowserRouter>,
   </ThemeProvider>
-   
+
 );
 
 // If you want to start measuring performance in your app, pass a function

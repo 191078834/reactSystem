@@ -39,11 +39,11 @@ export default function DataListDisp(props) {
     }
 
     //削除したデータ
-    let postDeletedData = rows.filter((element) => sesRows.current.indexOf(element.id) !== -1);
+    // let postDeletedData = rows.filter((element) => sesRows.current.indexOf(element.id) !== -1);
     // doPostFetch(postDeletedData);
 
     //已经被删除过多的数据表
-    const deletedNewRows = rows.filter((element) => sesRows.current.indexOf(element.id) === -1);
+    // const deletedNewRows = rows.filter((element) => sesRows.current.indexOf(element.id) === -1);
 
     //delete message display
   //   setAlertContrl({

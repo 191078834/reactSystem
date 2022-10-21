@@ -10,6 +10,7 @@ npm i dayjs
 npm i @mui/x-date-pickers
 npm i @mui/x-data-grid --force
 npm i date-fns --force
+npm i @mui/lab
 
 typescripts
 https://www.zadmei.com/zrzykdsy.html

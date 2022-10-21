@@ -9,7 +9,6 @@ import {
   } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
-import TextInputWithFocusButton from './TextInputWithFocusButton';
 import WordList from'./pages/WordList/WordList';
 import App from './App';
 import {dashBoardTheme} from "./dashBoardTheme"

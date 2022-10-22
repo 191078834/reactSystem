@@ -7,16 +7,30 @@ const updateReducer = (State, action) => {
         case "FETCH_UPDATE_INIT":
             return {
                 ...State,
-                isLoading: true,
+                isLoading: false,
                 isError: false,
+                isUpdate:false,
+                isDelete:false,
             }
         case "FETCH_UPDATE_SUCCESS":
             return {
                 ...State,
                 isLoading: false,
-                isError: false,
+        isError: false,
+        isUpdate:true,
+        isDelete:false,
+        data:action.payload
             }
-        case "FETCH_UPDATE_FAILURE":
+        case "FETCH_DELETE_SUCCESS":
+            return{
+                ...State,
+                isLoading: false,
+        isError: false,
+        isUpdate:true,
+        isDelete:false,
+        data:action.payload
+            }
+        case "FETCH_FAILURE":
             return {
                 ...State,
                 isLoading: false,
@@ -36,6 +50,8 @@ const useWordListActionState = (initialUrl = "http://localhost:8090/wordlist/upd
     const [state, dispatch] = useReducer(updateReducer, {
         isLoading: false,
         isError: false,
+        isUpdate:false,
+        isDelete:false,
         data: InitialPostData,
     });
 
@@ -55,9 +71,9 @@ const useWordListActionState = (initialUrl = "http://localhost:8090/wordlist/upd
                     body: JSON.stringify({ data: postData })
                 }).then((res) => res.json())
                     .then((data) => data)
-                resData.status === "ok" ? dispatch({ type: "FETCH_UPDATE_SUCCESS" }) : dispatch({ type: "FETCH_UPDATE_FAILURE" });
+                resData.status === "ok" ? dispatch({ type: "FETCH_UPDATE_SUCCESS",payload:resData.data }) : dispatch({ type: "FETCH_FAILURE" });
             } catch (error) {
-                dispatch({ type: "FETCH_UPDATE_FAILURE" });
+                dispatch({ type: "FETCH_FAILURE" });
             }
 
         }
@@ -65,7 +81,7 @@ const useWordListActionState = (initialUrl = "http://localhost:8090/wordlist/upd
 
     }, [url, postData])
 
-    const doPostFetch = (postData) => setPostData(postData);
+    const doPostFetch = (postData, url) => {setPostData(postData); setUrl(url)};
 
 
     return { ...state, doPostFetch };

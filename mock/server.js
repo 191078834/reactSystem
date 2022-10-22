@@ -128,7 +128,7 @@ app.all('/wordlist/', function (req, res) {
 
 app.post('/wordlist/update', (req, res) => {
     console.log('reqBody', req.body);
-    res.json({ data: 1, status: "ok" });
+    res.json({ data: req.body, status: "ok" });
 })
 
 /**

@@ -3,13 +3,12 @@ import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { Box, Container } from "@mui/system";
 import TextField from '@mui/material/TextField';
-import TodoList from "./TodoList/TodoList"
 import useDataApi from "../../api/usePersonalState";
 import CommonButton from "../../componments/common/CommonButton/CommonButton";
 import ResponsiveDatePickers from "../../componments/common/ResponsiveDatePickers/ResponsiveDatePickers";
 import CommonLoadingButton from "../../componments/common/CommonLoadingButton/CommonLoadingButton"
 import { kinyuTableColumns } from '../../componments/constobject/constObject';
-import DataListDisp from "../WordList/TodoList/DataListDisp"
+import DataListDisp from "./TodoList/DataListDisp"
 
 function WordList() {
   const { isLoading, isError, data, doFetch } = useDataApi("http://localhost:8090/wordlist", []);

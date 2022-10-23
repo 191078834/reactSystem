@@ -10,7 +10,9 @@ import CommonDialog from '../../../componments/common/CommonDialog/CommonDialog'
 import CommonCollapse from '../../../componments/common/CommonCollapse/CommonCollapse';
 
 export default function DataListDisp(props) {
-
+  
+  let disInfo
+  let getDataInfo
   const [rows, setsRows] = React.useState(props.rows);
   
   let sesRows = React.useRef([]);
@@ -62,24 +64,22 @@ export default function DataListDisp(props) {
   //更新ボタン
   const updateCell = () => {
     if (sesRows.current.length === 0) {
-      setAlertContrl({
-        alertOpen: true,
-        alertSeverity: 'warning',
-        alertMessage: 'チェックしない'
-      });
+      // setAlertContrl({
+      //   alertOpen: true,
+      //   alertSeverity: 'warning',
+      //   alertMessage: 'チェックしない'
+      // });
+      disInfo = <Alert severity="warning" variant="standard"> チェックしない</Alert>
       return
     }
     // 仮fetchのデータ
     let postData = rows.filter((element) => sesRows.current.indexOf(element.id) !== -1)
     doPostFetch(postData, "http://localhost:8090/wordlist/update");
-    // isError?setAlertContrl({alertOpen: true, alertSeverity: 'warning', alertMessage: '更新失敗しました'})
-    // :setAlertContrl({ alertOpen: true, alertSeverity: 'success',alertMessage: '更新しました' })
-
     }
 
-    let getDataInfo
+   
     if(props.isError){getDataInfo=<Alert severity="error" variant="standard"> データ取得失敗</Alert>}
-    let disInfo 
+  
     if(isUpdate&&data.data.length>0){ 
       disInfo = <Alert severity="success" variant="standard"> データ更新しました</Alert>}
     if(isError){disInfo = <Alert severity="error" variant="standard"> 操作失敗しました</Alert>}

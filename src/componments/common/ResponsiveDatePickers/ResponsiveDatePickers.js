@@ -12,7 +12,8 @@ import { ja } from 'date-fns/locale'
 const ResponsiveDatePickers = (props, ref) => {
 
   const locale = ["ja"];
-  const [value, setValue] = React.useState(format(new Date(), 'yyyy/MM/dd', { locale: ja }));
+  // format(new Date(), 'yyyy/MM/dd', { locale: ja })
+  const [value, setValue] = React.useState('');
   let childRef = React.useRef(value);
 
 

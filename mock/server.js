@@ -7,49 +7,66 @@ const bodyParser = require('body-parser');    // 引入body-parser模块
 // 単語のテキストのパースを設定
 const dirname = __dirname.substring(0, __dirname.lastIndexOf('\\'));
 
-function fn(filename) {
-    return new Promise(function (resolve, reject) {
-        //readFile(path,[encoding],callback)  异步读取文件全部内容
-        console.log('ファイルのパス:⁂⁂⁂', path.join(dirname, filename));
-        let content = fs.readFile(path.join(dirname, filename), 'utf8', (err, data) => {
-            err ? reject(err) : resolve(data);
+
+const getData = (res, req) => {
+
+    function fn(filename) {
+        return new Promise(function (resolve, reject) {
+            //readFile(path,[encoding],callback)  异步读取文件全部内容
+            console.log('ファイルのパス:⁂⁂⁂', path.join(dirname, filename));
+            let content = fs.readFile(path.join(dirname, filename), 'utf8', (err, data) => {
+                err ? reject(err) : resolve(data);
+            })
         })
+    }
+
+    const date = new Date();
+    const year = date.getFullYear().toString()
+
+    const wordReadApi = async (fileName) => {
+
+        console.log('Read start Time', date.toJSON());
+
+
+
+        let FileArrayresult = await fn(fileName).then((result) => {
+            var newRowArr = result.split(/\r/);
+            var Allarray = Array.of(newRowArr.length);
+            newRowArr.forEach((element, index) => {
+                let newElement = element.replace(/\n/, '').split(/\s/)
+                // push /unshift /contact
+                let jsonElement = {
+                    "id": index + 1,
+                    "word": newElement[0],
+                    "loumaji": newElement[1],
+                    "translate": newElement[2],
+                    "putTime": year + "/" + newElement[3]
+                }
+                Allarray.push(jsonElement);
+
+            });
+            //删除最后一个元素
+            // Allarray.pop();
+            //删除第一个元素
+            Allarray.shift()
+            return Allarray
+        }).then(data => data)
+
+
+        return FileArrayresult
+
+    }
+    wordReadApi('word.txt').then(data => {
+
+        if (req.query.word !== undefined || req.query.fromTime !== undefined || req.query.toTime !== undefined) {
+            let retData = data.filter((element) => element.loumaji.includes(req.query.word) === true)
+            res.json({ "data": retData })
+            return
+        }
+        res.json({ "data": data })
     })
+
 }
-var datas;
-const date = new Date();
-const year = date.getFullYear().toString()
-
-const wordReadApi = async (fileName) => {
-
-    console.log('Read start Time', date.toJSON());
-    let FileArrayresult = await fn(fileName).then((result) => {
-        var newRowArr = result.split(/\r/);
-        var Allarray = Array.of(newRowArr.length);
-        newRowArr.forEach((element, index) => {
-            let newElement = element.replace(/\n/, '').split(/\s/)
-            // push /unshift /contact
-            let jsonElement = {
-                "id": index + 1,
-                "word": newElement[0],
-                "loumaji": newElement[1],
-                "translate": newElement[2],
-                "putTime": year + "/" + newElement[3]
-            }
-            Allarray.push(jsonElement);
-
-        });
-        //删除最后一个元素
-        // Allarray.pop();
-        //删除第一个元素
-        Allarray.shift()
-        return Allarray
-    });
-    datas = FileArrayresult;
-}
-// 単語のデータを取る
-
-wordReadApi('word.txt');
 
 //============================================================================================================================
 
@@ -112,7 +129,7 @@ let data = Mock.mock({
  * @param  {[type]} req  [客户端发过来的请求所带数据]
  * @param  {[type]} res  [服务端的相应对象，可使用res.send返回数据，res.json返回json数据，res.down返回下载文件]
  */
-app.all('/wordlist/', function (req, res) {
+app.all('/wordlist/search', function (req, res) {
     /**
      * mockjs中属性名‘|’符号后面的属性为随机属性，数组对象后面的随机属性为随机数组数量，正则表达式表示随机规则，+1代表自增
      */
@@ -120,9 +137,9 @@ app.all('/wordlist/', function (req, res) {
     // setTimeout(function () { res.json(data); }, 5000);
 
     //get获取数据
-    console.log('get', req.query);
-    let jsonData = { "data": datas }
-    res.json(jsonData)
+    // console.log('get', req.query);
+    getData(res, req)
+    // res.json()
 
 });
 

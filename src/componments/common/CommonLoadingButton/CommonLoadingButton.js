@@ -2,6 +2,7 @@ import React from 'react'
 import LoadingButton from '@mui/lab/LoadingButton';
 
 const CommonLoadingButton =({children,onClick, color, disabled, size,variant, type,isLoading=false, sx={ml:0.5, height:55}}) => {
+  
     return (
       <LoadingButton
       color={color}

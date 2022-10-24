@@ -19,7 +19,6 @@ export default function DataListDisp(props) {
   let sesRows = React.useRef([]);
   const { isLoading, isError, isUpdate, isDelete, data, doPostFetch } = useWordListActionState();
   const [alertContrl, setAlertContrl] = React.useState(false)
-
   // cellを仮更新
   const changeCell = (changeValue) => {
     if(changeValue){
@@ -77,11 +76,7 @@ export default function DataListDisp(props) {
       <Stack direction="row" spacing={3} justifyContent="flex-end">
         <Box >
           <Collapse in={true} sx={{ width: '100%',mr:150}} >
-          {disInfoCheck}{disInfo}{getDataInfo}
-          </Collapse>
-          
-            <Collapse in={props.isError} sx={{ width: '100%',mr:150}} >
-              
+            {disInfoCheck}{disInfo}{getDataInfo}
           </Collapse>
           
         </Box>

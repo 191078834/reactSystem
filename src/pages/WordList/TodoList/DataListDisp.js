@@ -7,7 +7,6 @@ import Collapse from '@mui/material/Collapse';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import useWordListActionState from '../../../api/useWordListActionState'
 import CommonDialog from '../../../componments/common/CommonDialog/CommonDialog'
-import CommonCollapse from '../../../componments/common/CommonCollapse/CommonCollapse';
 
 export default function DataListDisp(props) {
   
